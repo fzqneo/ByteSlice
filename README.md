@@ -5,6 +5,19 @@ The basic idea is to chop column values into multiple bytes and store the bytes 
 The implementation heavily utilizes Single-Instruction-Multiple-Data (**SIMD**) instruction sets on modern CPUs to achieve bare-metal speed processing.
 The scan algorithms are optimized to reduce number of instructions, memory footprint, branch mis-predictions and other performance-critical factors.
 
+# Clone
+
+```bash
+git clone --recursive [GIT URL]
+```
+
+If you have cloned without the `--recursive` option, run below under the top level directory:
+
+```bash
+git submodule update --init --recursive
+```
+
+
 # Build
 
 You need CMake to generate build scripts. Makefile is tested.
@@ -114,3 +127,6 @@ This package has been tested with the following configuration:
 - Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
 - g++ 4.9.3
 
+# Known issues
+
+1. `posix_memalign()` is used in some files, causing compilation failure on Windows.
