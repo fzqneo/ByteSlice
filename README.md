@@ -8,7 +8,7 @@ The scan algorithms are optimized to reduce number of instructions, memory footp
 # Clone
 
 ```bash
-git clone --recursive [GIT URL]
+git clone --recursive https://github.com/fzqneo/ByteSlice.git
 ```
 
 If you have cloned without the `--recursive` option, run below under the top level directory:
