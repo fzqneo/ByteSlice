@@ -1,6 +1,6 @@
 **ByteSlice** is a main-memory data format for fixed length unsigned
-integer encoded values. It is primarily designed for highly efficient
-*scan* and *lookup* in **column-store databases**. The basic idea is to
+integers, and attributes that can be encoded as such. It is primarily designed for highly efficient
+ordinal comparison based *scan* and *lookup* in **column-store databases**. The basic idea is to
 chop column values into multiple bytes and store the bytes at different
 contiguous memory spaces.
 
@@ -142,9 +142,14 @@ Management of Data, pp. 31-46. ACM, 2015.
 Download: http://dl.acm.org/citation.cfm?id=2747642
 
 
+# Contact
+
+Ziqiang Feng ( zf at cs dot cmu dot edu )
+
+
 # Platform requirements
 
-1. C++ compiler with C++11 and OpenMP support
+1. C++ compiler supporting C++11, OpenMP and AVX2
 2. CPU with AVX2 instruction set extension
 
 
@@ -155,6 +160,7 @@ This package has been tested with the following configuration:
 - Linux 3.13.0-66-generic (64-bit)
 - Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
 - g++ 4.9.3
+
 
 # Known issues
 
