@@ -10,6 +10,22 @@ processing. The scan algorithms are optimized to reduce number of
 instructions, memory footprint, branch mis-predictions and other
 performance-critical factors.
 
+# Run Examples in Docker
+
+You need to install [Docker](https://www.docker.com/).
+The compiled release-build are contained in a Docker image [zf01/byteslice](https://hub.docker.com/r/zf01/byteslice/).
+
+Run with default parameters:
+```bash
+docker run --rm zf01/byteslice
+```
+
+Run with custom parameters:
+```bash
+docker run --rm -it zf01/byteslice /bin/bash
+OMP_NUM_THREADS=1 /root/ByteSlice/release/example/example1 -s 16000000 -b 17
+```
+
 # Clone
 
 ```bash
