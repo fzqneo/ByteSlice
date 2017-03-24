@@ -10,10 +10,10 @@ processing. The scan algorithms are optimized to reduce number of
 instructions, memory footprint, branch mis-predictions and other
 performance-critical factors.
 
-# Run Examples in Docker
+# Run examples in Docker
 
+A compiled release-build is contained in the Docker image [zf01/byteslice](https://hub.docker.com/r/zf01/byteslice/).
 You need to install [Docker](https://www.docker.com/).
-The compiled release-build are contained in a Docker image [zf01/byteslice](https://hub.docker.com/r/zf01/byteslice/).
 
 Run with default parameters:
 ```bash
@@ -26,23 +26,31 @@ docker run --rm -it zf01/byteslice /bin/bash
 OMP_NUM_THREADS=1 /root/ByteSlice/release/example/example1 -s 16000000 -b 17
 ```
 
-# Clone
+## Build Docker image from source
+
+```bash
+# Run inside the project directory
+docker build -t byteslice .
+```
+
+# Build from source
+
+## Clone
 
 ```bash
 git clone --recursive https://github.com/fzqneo/ByteSlice.git
 ```
 
-If you have cloned without the `--recursive` option, run below under the
-top level directory:
+Or this after cloning without `--recursive`:
 
 ```bash
 git submodule update --init --recursive
 ```
 
 
-# Build
+## Build
 
-You need CMake to generate build scripts. Makefile is tested.
+You need [CMake](https://cmake.org/) to generate build scripts. Makefile is tested.
 
 To generate debug build:
 
