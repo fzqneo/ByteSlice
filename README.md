@@ -165,6 +165,27 @@ Management of Data, pp. 31-46. ACM, 2015.
 
 Download: http://dl.acm.org/citation.cfm?id=2747642
 
+BibTex:
+```
+@inproceedings{Feng:2015:BPE:2723372.2747642,
+ author = {Feng, Ziqiang and Lo, Eric and Kao, Ben and Xu, Wenjian},
+ title = {ByteSlice: Pushing the Envelop of Main Memory Data Processing with a New Storage Layout},
+ booktitle = {Proceedings of the 2015 ACM SIGMOD International Conference on Management of Data},
+ series = {SIGMOD '15},
+ year = {2015},
+ isbn = {978-1-4503-2758-9},
+ location = {Melbourne, Victoria, Australia},
+ pages = {31--46},
+ numpages = {16},
+ url = {http://doi.acm.org/10.1145/2723372.2747642},
+ doi = {10.1145/2723372.2747642},
+ acmid = {2747642},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {column store, main memory, olap, simd, storage layout},
+} 
+```
+
 
 # Contact
 
