@@ -1,5 +1,6 @@
 **ByteSlice** is a main-memory data format for fixed length unsigned
-integers, and attributes that can be encoded as such. It is primarily designed for highly efficient
+integers, and attributes that can be encoded as such (e.g., age, datetime). 
+It is primarily designed for highly efficient
 ordinal comparison based *scan* and *lookup* in **column-store databases**. The basic idea is to
 chop column values into multiple bytes and store the bytes at different
 contiguous memory spaces.
@@ -10,28 +11,24 @@ processing. The scan algorithms are optimized to reduce number of
 instructions, memory footprint, branch mis-predictions and other
 performance-critical factors.
 
-# Run examples in Docker
 
-A compiled release-build is contained in the Docker image [zf01/byteslice](https://hub.docker.com/r/zf01/byteslice/).
-You need to install [Docker](https://www.docker.com/).
+# Using the library
 
-Run with default parameters:
-```bash
-docker run --rm zf01/byteslice
+A quick glimpse:
+
+```c++
+// Create a column of two million 12-bit values in ByteSlice format
+Column* column = new Column(ColumnType::kByteSlicePadRight, 12, 2*1024*1024);
+// Prepare a bit vector to store scan results
+BitVector* bitvector = new BitVector(column);
+// Execute scan on the column with predicate value < 3
+column->Scan(Comparator::kLess,
+            3,
+            bitvector,
+            Bitwise::kSet);
+
 ```
 
-Run with custom parameters:
-```bash
-docker run --rm -it zf01/byteslice /bin/bash
-OMP_NUM_THREADS=1 /root/ByteSlice/release/example/example1 -s 16000000 -b 17
-```
-
-## Build Docker image from source
-
-```bash
-# Run inside the project directory
-docker build -t byteslice .
-```
 
 # Build from source
 
@@ -91,24 +88,6 @@ example/example1 -h
 NOTE: The source code of example program showcases how to use the library.
 
 
-# Using the library
-
-A quick glimpse:
-
-```c++
-// Create a column of two million 12-bit values in ByteSlice format
-Column* column = new Column(ColumnType::kByteSlicePadRight, 12, 2*1024*1024);
-// Prepare a bit vector to store scan results
-BitVector* bitvector = new BitVector(column);
-// Execute scan on the column with predicate value < 3
-column->Scan(Comparator::kLess,
-            3,
-            bitvector,
-            Bitwise::kSet);
-
-```
-
-
 # Multithreading
 
 Multithreading is controlled by OpenMP environment variables: (assume
@@ -154,6 +133,30 @@ You need doxygen to generate documentations in html and latex.
 + `src/` - ByteSlice library source files
 
 + `tests/` - Unit tests written in GoogleTest framework
+
+
+# Run examples in Docker
+
+A compiled release-build is contained in the Docker image [zf01/byteslice](https://hub.docker.com/r/zf01/byteslice/).
+You need to install [Docker](https://www.docker.com/).
+
+Run with default parameters:
+```bash
+docker run --rm zf01/byteslice
+```
+
+Run with custom parameters:
+```bash
+docker run --rm -it zf01/byteslice /bin/bash
+OMP_NUM_THREADS=1 /root/ByteSlice/release/example/example1 -s 16000000 -b 17
+```
+
+## Build Docker image from source
+
+```bash
+# Run inside the project directory
+docker build -t byteslice .
+```
 
 
 # Citing this work
